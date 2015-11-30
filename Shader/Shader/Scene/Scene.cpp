@@ -38,7 +38,6 @@ Scene::Scene() : objects(std::vector<Object *>())
 	objects.push_back(new Object (m, new Diffus(white)));
 	*/
 	light = Point(50.f, 70.f, 81.6f);
-
 	
 }
 

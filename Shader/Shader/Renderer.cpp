@@ -26,14 +26,15 @@ ColorRGB Renderer::radiance(Ray r)
 
 ColorRGB Renderer::shade(Point p, Normals n, Point eye, ColorRGB color)
 {
-	return color;
+	return ambiant + color * clamp(dot(n, normalize(s.light - p)), 0.f, 1.f) + color *  std::pow(clamp(dot(reflect(normalize(s.light - p), n), normalize(eye - p)), 0.f, 1.f), 10);
 }
+
 void Renderer::render()
 {
 	int h = f.yResolution;
 	int w = f.xResolution;
-	//BBox sceneBBox = 
-#pragma omp parallel for
+
+	#pragma omp parallel for
 	for (int y = 0; y < h; y++)
 	{
 		std::cerr << "\rRendering: " << 100 * y / (h - 1) << "%";
