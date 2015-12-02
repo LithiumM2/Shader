@@ -1,4 +1,7 @@
 #pragma once
+
+#include "..\Geometry\Vector.h"
+
 #ifdef M_PI
 #undef M_PI
 #endif
@@ -13,3 +16,9 @@
 const int nbRebondMax = 5;
 const int nbEchantillon = 0;
 const int nbEchantillonAA = 3;
+
+// Distance d'intersection null
+const double noIntersect = -10.0f;
+
+// Vecteur d'intersection null
+const Vector noIntersectVec ( -10.0f );

@@ -51,6 +51,11 @@ public:
 		return *this;
 	}
 
+	inline bool & operator!=( const Vector &v ) {
+		bool res = ( x != v.x || y != v.y || z != v.z );
+		return res;
+	}
+
 	inline float operator[](unsigned int i) const
 	{
 		return(&x)[i];

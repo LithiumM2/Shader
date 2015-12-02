@@ -124,6 +124,7 @@
     <ClCompile Include="Geometry\BBox.cpp" />
     <ClCompile Include="Geometry\Ray.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Noise\Noise.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Scene\Scene.cpp" />
@@ -132,6 +133,8 @@
     <ClCompile Include="Shapes\Shapes.cpp" />
     <ClCompile Include="Shapes\Sphere.cpp" />
     <ClCompile Include="Shapes\Triangle.cpp" />
+    <ClCompile Include="Terrain\TerrainFractal.cpp" />
+    <ClCompile Include="Terrain\Terrain.cpp" />
     <ClCompile Include="Transform\Mat4x4.cpp" />
     <ClCompile Include="Transform\Transform.cpp" />
   </ItemGroup>
@@ -147,6 +150,7 @@
     <ClInclude Include="Geometry\Vector.h" />
     <ClInclude Include="Global\Constants.h" />
     <ClInclude Include="Global\Global.h" />
+    <ClInclude Include="Noise\Noise.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Scene\Scene.h" />
@@ -155,6 +159,8 @@
     <ClInclude Include="Shapes\Shapes.h" />
     <ClInclude Include="Shapes\Sphere.h" />
     <ClInclude Include="Shapes\Triangle.h" />
+    <ClInclude Include="Terrain\TerrainFractal.h" />
+    <ClInclude Include="Terrain\Terrain.h" />
     <ClInclude Include="Transform\Mat4x4.h" />
     <ClInclude Include="Transform\Transform.h" />
   </ItemGroup>
