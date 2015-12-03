@@ -36,9 +36,13 @@ float Renderer::V(Point collide, Point l)
 	Vector lightVec = normalize(l - collide);
 	Ray lightRay = Ray(l, -lightVec);
 	Object * obj;
-	if ((obj = s.intersect(lightRay, t)) != nullptr && distance(collide, (lightRay.o + lightRay.d * t)) < epsilon)
+	if ((obj = s.intersect(lightRay, t)) != nullptr)
 	{
-		return 1.f;
+		float distance1 = distance(lightRay.o, lightRay.o + lightRay.d * t);
+
+		float distance2 = distance(lightRay.o, collide);
+		if (!(distance1 + epsilon < distance2))
+			return 1.f;
 	}
 	return 0.f;
 }
