@@ -12,6 +12,7 @@ public:
 	Renderer();
 	void render();
 	ColorRGB radiance(Ray r);
+	float V(Point collide, Point l);
 	ColorRGB shade(Point p, Normals n, Point eye, ColorRGB color);
 	~Renderer();
 };

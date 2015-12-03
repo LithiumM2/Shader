@@ -26,7 +26,21 @@ ColorRGB Renderer::radiance(Ray r)
 
 ColorRGB Renderer::shade(Point p, Normals n, Point eye, ColorRGB color)
 {
-	return ambiant + color * clamp(dot(n, normalize(s.light - p)), 0.f, 1.f) + color *  std::pow(clamp(dot(reflect(normalize(s.light - p), n), normalize(eye - p)), 0.f, 1.f), 40);
+	return ambiant + (color * clamp(dot(n, normalize(s.light - p)), 0.f, 1.f) + color *  std::pow(clamp(dot(reflect(normalize(s.light - p), n), normalize(eye - p)), 0.f, 1.f), 40)) * V(p, s.light);
+}
+
+float Renderer::V(Point collide, Point l)
+{
+	const float epsilon = 0.1f;
+	float t;
+	Vector lightVec = normalize(l - collide);
+	Ray lightRay = Ray(l, -lightVec);
+	Object * obj;
+	if ((obj = s.intersect(lightRay, t)) != nullptr && distance(collide, (lightRay.o + lightRay.d * t)) < epsilon)
+	{
+		return 1.f;
+	}
+	return 0.f;
 }
 
 void Renderer::render()
