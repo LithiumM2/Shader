@@ -9,6 +9,9 @@ public:
 	Point(const Point &p) : x(p.x), y(p.y), z(p.z){};
 
 	inline Point operator+(const Vector &p) const { return Point(x + p.x, y + p.y, z + p.z); };
+	inline Point operator+(const Point &p) const { return Point(x + p.x, y + p.y, z + p.z); }; // n'existe pas normalement mais sert a faire la derive
+
+	inline bool operator!=(const Point &p) const { return x != p.x || y != p.y || z != p.z; };
 
 	inline Point & operator+=(const Vector &p)
 	{
@@ -26,5 +29,4 @@ public:
 		return *this;
 	}
 
-	// operator *, + ?
 };

@@ -29,9 +29,11 @@ Scene::Scene() : objects(std::vector<Object *>())
 	//objects.push_back(new Object (new Triangle(Point(100.f, 100.f, 150.f), Point(100.f, 100.f, 0.f), Point(0.f, 100.f, 150.f)), new Diffus(white)));
 	//
 	// Sphere
-	objects.push_back(new Object (new Sphere(16.5, Point(27, 16.5, 47)), red));
-	objects.push_back(new Object(new Sphere(16.5, Point(73, 16.5, 78)), white));
-//	objects.push_back(new Object(new Cube(Point(72, 15.5, 77), Point(73, 16.5, 78)), new Diffus(white)));
+	//objects.push_back(new Object (new Sphere(16.5, Point(27, 16.5, 47)), red));
+	//objects.push_back(new Object(new Sphere(16.5, Point(73, 16.5, 78)), white));
+//	objects.push_back(new Object(new Cube(Point(72, 15.5, 77), Point(73, 16.5, 78)), new Diffus(white)));	
+	Terrain * t = new TerrainFractal(100, 100);
+	objects.push_back(new Object(t, white));
 	/*
 	Mesh * m = new Mesh();
 	*m = Mesh::readFromObj("test.obj", Vector(50, 16.5, 50));

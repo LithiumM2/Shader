@@ -7,15 +7,15 @@ void Terrain::MaxMin ( double x ) {
 }
 
 // Renvoie vrai si le point p est en dehors du terrain, faux sinon.
-bool Terrain::inside ( const Vector &  p ) const {
+bool Terrain::inside ( const Point &  p ) const {
 	return ( p.z > getPoint ( p.x, p.y ).z );
 }
 
 // calcul la distance en hauteur entre le point p et le terrain
-double Terrain::distance ( const Vector &  p ) const {
-	Vector pointTerrain = getPoint ( p.x, p.y );
+double Terrain::distance ( const Point &  p ) const {
+	Point pointTerrain = getPoint ( p.x, p.y );
 
-	if ( pointTerrain != noIntersectVec ) // Car distance en z en attendant box.
+	if ( (pointTerrain != noIntersectPoint) ) // Car distance en z en attendant box.
 		return ( p.z - pointTerrain.z ) * k; // 0.5 = pente maximale
 
 	return noIntersect;
@@ -34,4 +34,28 @@ void Terrain::calcK ( ) {
 		}
 	}
 	k /= high;
+}
+
+// Renvoie True si le Ray r touche le terrain
+bool Terrain::intersect(const Ray& r, float *tHit) const
+{
+	*tHit = 0.f;
+	Point res;
+	for (int i = 0; i < 256; i++)
+	{
+		res = r.o + (r.d * *tHit);
+		Point tmp = getPoint(res.x, res.y);
+		if (tmp != noIntersectPoint)
+		{
+			double h = res.z - tmp.z;
+			if (h < (0.001 * *tHit))
+				return true;
+			*tHit += k * h;
+		}
+		else
+			*tHit += 10.;
+
+	}
+	*tHit = noIntersect;
+	return false;
 }

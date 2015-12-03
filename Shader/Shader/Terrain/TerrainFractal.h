@@ -11,11 +11,11 @@ public:
 	// Renvoi un terrain géneré aléatoirement
 	TerrainFractal ( unsigned terrain_width_, unsigned int terrain_height_ );
 
-	Vector getPoint ( double x, double y ) const;
+	Point getPoint ( double x, double y ) const;
 
 	// Renvoi la normal du terrain au point p
-	Vector normal ( const Vector & p ) const;
+	Normals getNormal(Point p) const;
 
-	Vector getColor ( const Vector & p ) const;
+	//Vector getColor ( const Vector & p ) const;
 };
 

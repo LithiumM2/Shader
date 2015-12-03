@@ -1,6 +1,7 @@
 #pragma once
 
 #include "..\Geometry\Vector.h"
+#include "..\Geometry\Point.h"
 
 #ifdef M_PI
 #undef M_PI
@@ -22,3 +23,6 @@ const double noIntersect = -10.0f;
 
 // Vecteur d'intersection null
 const Vector noIntersectVec ( -10.0f );
+
+// Point d'intersection null
+const Point noIntersectPoint(-10.0f);

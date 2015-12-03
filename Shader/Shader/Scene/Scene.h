@@ -7,6 +7,7 @@
 #include "..\Shapes\Mesh.h"
 #include "..\Global\Constants.h"
 #include "..\Geometry\Ray.h"
+#include "..\Terrain\TerrainFractal.h"
 class Scene
 {
 	std::vector<Object *> objects;

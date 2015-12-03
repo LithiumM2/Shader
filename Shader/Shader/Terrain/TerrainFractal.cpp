@@ -17,16 +17,16 @@ TerrainFractal::TerrainFractal ( unsigned int terrain_width_, unsigned int terra
 	calcK ( );
 }
 
-Vector TerrainFractal::getPoint ( double x, double y ) const {
-	return x > 0 && x < terrain_width && y > 0 && y < terrain_height ? Vector ( x, y, Noise::noise ( x, y ) ) : noIntersectVec;
+Point TerrainFractal::getPoint ( double x, double y ) const {
+	return x > 0 && x < terrain_width && y > 0 && y < terrain_height ? Point ( x, y, Noise::noise ( x, y ) ) : noIntersectPoint;
 }
 
 // Renvoi la normal du terrain au point p
-Vector TerrainFractal::normal ( const Vector & p ) const {
+Normals TerrainFractal::getNormal(Point p) const {
 	float eps = .1f;
-	return ( getPoint ( p.x - eps, p.y - eps ) + getPoint ( p.x + eps, p.y + eps ) ) / ( 2 * eps );
+	return Normals ( getPoint ( p.x - eps, p.y - eps ) + getPoint ( p.x + eps, p.y + eps ) ) / ( 2 * eps );
 }
-
-Vector TerrainFractal::getColor ( const Vector & p ) const { 
-	return Vector ( 1., 1., 1. ); 
-}
+//
+//Vector TerrainFractal::getColor ( const Vector & p ) const { 
+//	return Vector ( 1., 1., 1. ); 
+//}

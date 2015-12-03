@@ -9,6 +9,7 @@ public:
 	Normals(float x_, float y_, float z_) : x(x_), y(y_), z(z_){};
 	Normals(const Normals &n) : x(n.x), y(n.y), z(n.z){};
 	explicit Normals(const Vector& v) : x(v.x), y(v.y), z(v.z){};
+	explicit Normals(const Point& v) : x(v.x), y(v.y), z(v.z){};
 
 	inline Normals operator+(const Normals &n) const { return Normals(x + n.x, y + n.y, z + n.z); };
 
